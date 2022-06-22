@@ -55,6 +55,6 @@ def switch(key, value):
     return key
 
 if __name__ == '__main__':
-    set = prep_dataset('/Users/simratb/Projects/Python/shakespeare.txt')
+    set = prep_dataset('FILE_PATH')
     story = randomize(set)
     print(story)
