@@ -36,25 +36,25 @@ def prep_dataset(addr: str) -> dict:
     
     return dataset
 
-def randomize(dataset: dict) -> str:
+def randomize(dataset: dict) -> list[int,str]:
     dkeys = list(dataset.keys())
     key = dkeys[random.randint(0, len(dkeys)-1)]
     value = dataset[key][random.randint(0, len(dataset[key])-1)]
     paragraph = ''
-    count = 0
-    while count <= 50:
+    count = 0 #The count for the paragraph length
+    while count <= 100:
         paragraph += " " + value
         key = value
         value = dataset[key][random.randint(0, len(dataset[key])-1)]
         count += 1
     paragraph += "..."
-    return(paragraph)
+    return([count, paragraph])
 
 def switch(key, value):
     key = value
     return key
 
 if __name__ == '__main__':
-    set = prep_dataset('FILE_PATH')
+    set = prep_dataset('YOUR_PATH')
     story = randomize(set)
-    print(story)
+    print("count: {} \n{}".format(story[0]-1, story[1]))
